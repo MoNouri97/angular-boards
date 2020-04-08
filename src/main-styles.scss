@@ -1,0 +1,17 @@
+// Global Styles
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900|Nunito:400&display=swap");
+
+$family-sans-serif: "Nunito", sans-serif;
+
+// bulma
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+html,
+body {
+  height: 100%;
+}
+html {
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
