@@ -8,37 +8,22 @@
   </div>
   <div class="board">
     <div class="board-bar">
-      <p class="board-name">Name</p>
+      <p class="board-name">{{ board.name }}</p>
     </div>
 
     <div class="board-wrapper">
       <div class="board-columns" cdkDropListGroup>
-        <div class="board-column">
+        <div *ngFor="let column of board.columns" class="board-column">
           <div class="column-title">
-            Todo
+            {{ column.title }}
           </div>
           <div
             class="tasks"
             cdkDropList
-            [cdkDropListData]="todo"
+            [cdkDropListData]="column.tasks"
             (cdkDropListDropped)="drop($event)"
           >
-            <div class="task" *ngFor="let item of todo" cdkDrag>
-              {{ item }}
-            </div>
-          </div>
-        </div>
-        <div class="board-column">
-          <div class="column-title">
-            Todo
-          </div>
-          <div
-            class="tasks"
-            cdkDropList
-            [cdkDropListData]="done"
-            (cdkDropListDropped)="drop($event)"
-          >
-            <div class="task" *ngFor="let item of done" cdkDrag>
+            <div class="task" *ngFor="let item of column.tasks" cdkDrag>
               {{ item }}
             </div>
           </div>
