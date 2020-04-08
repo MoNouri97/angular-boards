@@ -6,6 +6,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Board } from "src/app/models/board.model";
 import { Column } from "src/app/models/column.model";
+import { BoardsService } from "src/app/services/boards.service";
 
 @Component({
   selector: "app-main-view",
@@ -13,27 +14,16 @@ import { Column } from "src/app/models/column.model";
   styleUrls: ["./main-view.component.scss"],
 })
 export class MainViewComponent implements OnInit {
-  board: Board = new Board("Example Board", [
-    new Column("To Do", [
-      "Creating Service",
-      "Optimizing",
-      "Ability To add tasks would be nice 😅 ",
-      "multiple boards",
-      "deleting",
-      "storage",
-      "Adding Final Touches",
-    ]),
-    new Column("Doing", [
-      "Add dynamic data",
-      "Creating Models",
-      "Looping through Data",
-    ]),
-    new Column("Done", ["Styling", "Animating", "Use CDK/DragDrop"]),
-  ]);
+  board: Board;
 
-  ngOnInit(): void {}
+  constructor(private service: BoardsService) {}
+  ngOnInit(): void {
+    this.board = this.service.getBoard(0);
+  }
 
   drop(event: CdkDragDrop<string[]>) {
+    console.log("helllo");
+
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

@@ -5,6 +5,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
+import { BoardsService } from "src/app/services/boards.service";
 
 @Component({
   selector: "app-board",
@@ -13,7 +14,7 @@ import {
 })
 export class BoardComponent implements OnInit {
   @Input() board: Board;
-  constructor() {}
+  constructor(private service: BoardsService) {}
 
   ngOnInit(): void {}
 
@@ -32,5 +33,7 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
     }
+    console.log(this.board);
+    this.service.updateStorage();
   }
 }
