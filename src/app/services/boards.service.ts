@@ -48,4 +48,8 @@ export class BoardsService {
     const board: Board = this.boards.filter((b) => b.id == id)[0];
     return board;
   }
+
+  addTask(task: string, boardId: number, column: number) {
+    const b = this.getBoard(boardId).columns[column].tasks.splice(0, 0, task);
+  }
 }

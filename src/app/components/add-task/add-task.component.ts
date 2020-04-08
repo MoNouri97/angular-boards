@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -8,11 +8,13 @@ import { NgForm } from "@angular/forms";
 })
 export class AddTaskComponent implements OnInit {
   task: string;
+  @Output() add = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
   onSubmit(form: NgForm): void {
     console.log(form.value);
+    this.add.emit(form.value.task);
   }
 }

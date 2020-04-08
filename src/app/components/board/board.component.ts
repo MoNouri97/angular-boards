@@ -6,6 +6,7 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { BoardsService } from "src/app/services/boards.service";
+import { Column } from "src/app/models/column.model";
 
 @Component({
   selector: "app-board",
@@ -35,5 +36,9 @@ export class BoardComponent implements OnInit {
     }
     console.log(this.board);
     this.service.updateStorage();
+  }
+
+  onAddTask(task: string, column: number): void {
+    this.service.addTask(task, this.board.id, column);
   }
 }
