@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Board } from "src/app/models/board.model";
 import {
   CdkDragDrop,
@@ -6,7 +6,6 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { BoardsService } from "src/app/services/boards.service";
-import { Column } from "src/app/models/column.model";
 import {
   animate,
   style,
@@ -104,11 +103,9 @@ import {
     ]),
   ],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
   @Input() board: Board;
   constructor(private service: BoardsService) {}
-
-  ngOnInit(): void {}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -125,7 +122,6 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
     }
-    console.log(this.board);
     this.service.updateStorage();
   }
 

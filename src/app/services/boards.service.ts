@@ -7,6 +7,13 @@ import { Column } from "../models/column.model";
 })
 export class BoardsService {
   boards: Board[];
+  private _taskToAdd: boolean = false;
+  public get taskToAdd(): boolean {
+    return this._taskToAdd;
+  }
+  public set taskToAdd(value: boolean) {
+    this._taskToAdd = value;
+  }
 
   constructor() {
     this.boards = JSON.parse(localStorage.getItem("boards"));
@@ -51,5 +58,6 @@ export class BoardsService {
 
   addTask(task: string, boardId: number, column: number) {
     const b = this.getBoard(boardId).columns[column].tasks.splice(0, 0, task);
+    this.taskToAdd = true;
   }
 }

@@ -16,6 +16,6 @@ export class AddTaskComponent implements OnInit {
   onSubmit(form: NgForm): void {
     if (!form.valid) return;
     this.add.emit(form.value.task);
-    form.value.task = "";
+    form.reset();
   }
 }
