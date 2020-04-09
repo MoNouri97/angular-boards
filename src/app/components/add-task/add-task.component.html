@@ -1,0 +1,23 @@
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)">
+  <div class="field">
+    <!-- <label class="label">Username</label> -->
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="New Task"
+        [(ngModel)]="task"
+        name="task"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <button class="button has-background-primary has-text-white">
+        Add +
+      </button>
+    </div>
+  </div>
+</form>

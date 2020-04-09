@@ -5,7 +5,10 @@
 
   <div class="board-wrapper">
     <div class="board-columns" cdkDropListGroup>
-      <div *ngFor="let column of board.columns" class="board-column">
+      <div
+        *ngFor="let column of board.columns; index as i"
+        class="board-column"
+      >
         <div class="column-title">
           {{ column.title }}
         </div>
@@ -14,7 +17,9 @@
           cdkDropList
           [cdkDropListData]="column.tasks"
           (cdkDropListDropped)="drop($event)"
+          [@listAnim]
         >
+          <app-add-task (add)="onAddTask($event, i)"></app-add-task>
           <app-task *ngFor="let item of column.tasks" cdkDrag [task]="item">
           </app-task>
         </div>
