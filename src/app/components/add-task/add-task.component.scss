@@ -9,8 +9,9 @@ form {
   border-bottom: 2px solid #ddd;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05),
     0 3px 14px 2px rgba(0, 0, 0, 0.05);
-}
-.field {
-  flex-grow: 1;
-  margin: 10px;
+
+  .field {
+    flex-grow: 1;
+    margin: 10px;
+  }
 }

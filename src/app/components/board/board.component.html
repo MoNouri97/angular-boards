@@ -18,7 +18,7 @@
           [cdkDropListData]="column.tasks"
           (cdkDropListDropped)="drop($event)"
         >
-          <app-add-task (add)="onAddTask($event, i)"></app-add-task>
+          <app-add-task (add)="onAddTask($event, i)" [@itemAnim]></app-add-task>
           <app-task *ngFor="let item of column.tasks" cdkDrag [task]="item">
           </app-task>
         </div>

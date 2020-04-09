@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -18,7 +19,13 @@ import { AddTaskComponent } from "./components/add-task/add-task.component";
     TaskComponent,
     AddTaskComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, DragDropModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    DragDropModule,
+    FormsModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
