@@ -1,4 +1,14 @@
-import { Component, Input } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+} from "@angular/core";
 import { Board } from "src/app/models/board.model";
 import {
   CdkDragDrop,
@@ -103,10 +113,38 @@ import {
     ]),
   ],
 })
-export class BoardComponent {
+export class BoardComponent implements AfterViewChecked {
   @Input() board: Board;
+  @ViewChild("scrollDiv") scrollDiv: ElementRef<HTMLElement>;
+  @ViewChild("columns") columns: ElementRef<HTMLElement>;
+  editing: boolean = false;
+
   constructor(private service: BoardsService) {}
 
+  ngAfterViewChecked(): void {
+    this.refresh();
+  }
+
+  /**
+   * Update the Width of the top scrollBar
+   */
+  refresh() {
+    const width = this.columns.nativeElement.scrollWidth;
+    this.scrollDiv.nativeElement.style.width = width.toString() + "px";
+  }
+
+  /**
+   * Synch the scroll between columns & top scrollBar
+   * @param originalScroll true when scrolling the real element
+   */
+  onScroll(originalScroll: boolean) {
+    if (!originalScroll) {
+      this.columns.nativeElement.scrollLeft = this.scrollDiv.nativeElement.parentElement.scrollLeft;
+      return;
+    }
+
+    this.scrollDiv.nativeElement.parentElement.scrollLeft = this.columns.nativeElement.scrollLeft;
+  }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -128,5 +166,13 @@ export class BoardComponent {
   onAddTask(task: string, column: number): void {
     this.service.addTask(task, this.board.id, column);
     this.service.updateStorage();
+  }
+  onAddColumn(): void {
+    this.service.addColumn(this.board);
+    this.refresh();
+  }
+
+  toggleEditing() {
+    this.editing = !this.editing;
   }
 }

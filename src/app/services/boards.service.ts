@@ -60,4 +60,7 @@ export class BoardsService {
     const b = this.getBoard(boardId).columns[column].tasks.splice(0, 0, task);
     this.taskToAdd = true;
   }
+  addColumn(board: Board, title: string = "tasks") {
+    board.columns.push(new Column(title, []));
+  }
 }

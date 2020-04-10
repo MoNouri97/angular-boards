@@ -8,6 +8,9 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
+* {
+  scrollbar-color: #dadada #ffffff;
+}
 html,
 body {
   height: 100%;

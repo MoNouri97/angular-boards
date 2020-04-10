@@ -1,16 +1,38 @@
 <div class="board">
-  <div class="board-bar">
-    <p class="board-name">{{ board.name }}</p>
+  <div class="board-bar columns">
+    <p class="board-name column is-four-fifths">{{ board.name }}</p>
+    <div class="column">
+      <button class="button is-primary is-light" (click)="onAddColumn()">
+        <span>Columns</span>
+        <span class="icon is-small is-left">
+          <i data-feather="plus"></i>
+        </span>
+      </button>
+    </div>
   </div>
 
   <div class="board-wrapper">
-    <div class="board-columns" cdkDropListGroup>
+    <div class="scrollBar" (scroll)="onScroll(false)">
+      <div #scrollDiv></div>
+    </div>
+    <div
+      #columns
+      class="board-columns"
+      cdkDropListGroup
+      (scroll)="onScroll(true)"
+    >
       <div
         *ngFor="let column of board.columns; index as i"
         class="board-column"
       >
         <div class="column-title">
-          {{ column.title }}
+          <div *ngIf="!editing" (click)="toggleEditing()">
+            <span> {{ column.title }}</span>
+            <span class="icon is-small is-left has-text-grey-light">
+              <i data-feather="edit-2"></i>
+            </span>
+          </div>
+          <app-add-task *ngIf="editing"></app-add-task>
         </div>
         <div
           class="tasks"

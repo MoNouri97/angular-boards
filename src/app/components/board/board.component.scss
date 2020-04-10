@@ -22,7 +22,8 @@
   .board-bar {
     text-align: center;
     background: rgba($color: #808080, $alpha: 0.5);
-    padding: 8px;
+    padding: 0px;
+    margin-top: 0;
 
     .board-name {
       font-size: 20px;
@@ -33,12 +34,19 @@
   .board-wrapper {
     display: flex;
     flex-grow: 1;
-    // overflow-x: auto;
-
+    flex-direction: column;
+    // top scroll
+    .scrollBar {
+      overflow-x: auto;
+      overflow-y: hidden;
+      div {
+        height: 10px;
+      }
+    }
     .board-columns {
       display: flex;
       flex-grow: 1;
-
+      overflow-x: auto; // for more than 4 cols
       .board-column {
         display: flex;
         flex-direction: column;
@@ -59,6 +67,7 @@
         }
 
         .column-title {
+          cursor: pointer;
           font-family: "Lato", sans-serif;
           font-weight: 900;
           font-size: 20px;
@@ -66,6 +75,8 @@
           margin-bottom: 20px;
           border-bottom: 5px solid white;
           width: max-content;
+          display: flex;
+          align-items: center;
         }
       }
     }
