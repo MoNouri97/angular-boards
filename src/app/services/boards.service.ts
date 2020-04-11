@@ -58,11 +58,18 @@ export class BoardsService {
   addTask(task: string, boardId: number, column: number) {
     const b = this.getBoard(boardId).columns[column].tasks.splice(0, 0, task);
     this.taskToAdd = true;
+    this.updateStorage();
   }
   addColumn(board: Board, title: string = "tasks") {
     board.columns.push(new Column(title, []));
+    this.updateStorage();
   }
   renameColumn(board: number, column: number, title: string): void {
     this.getBoard(board).columns[column].title = title;
+    this.updateStorage();
+  }
+  deleteColumn(boardId: number, columnIndex: number) {
+    this.getBoard(boardId).columns.splice(columnIndex, 1);
+    this.updateStorage();
   }
 }

@@ -1,9 +1,17 @@
 <div class="column-wrapper">
   <div class="column-title">
-    <div *ngIf="!editing" (click)="toggleEditing()">
-      <span> {{ column.title }}</span>
-      <span class="icon is-small is-left has-text-grey-light">
-        <i data-feather="edit-2"></i>
+    <div *ngIf="!editing">
+      <div (click)="toggleEditing()">
+        <span> {{ column.title }}</span>
+        <span class="icon is-small is-left has-text-grey-light">
+          <i data-feather="edit-2"></i>
+        </span>
+      </div>
+      <span
+        class="icon is-small is-left has-text-danger"
+        (click)="onDeleteColumn()"
+      >
+        <i data-feather="trash"></i>
       </span>
     </div>
     <app-simple-form

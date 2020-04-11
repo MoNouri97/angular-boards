@@ -4,6 +4,8 @@ import {
   ViewChild,
   ElementRef,
   AfterViewChecked,
+  Output,
+  EventEmitter,
 } from "@angular/core";
 import { Board } from "src/app/models/board.model";
 import {
@@ -116,6 +118,8 @@ export class ColumnComponent {
   @Input() tasks: string[];
   editing: boolean = false;
 
+  @Output() delete = new EventEmitter();
+
   constructor(private service: BoardsService) {}
 
   drop(event: CdkDragDrop<string[]>) {
@@ -140,12 +144,13 @@ export class ColumnComponent {
     console.log(task);
 
     this.service.addTask(task, this.boardId, this.columnIndex);
-    this.service.updateStorage();
   }
   onEditColTitle(title: string): void {
     this.service.renameColumn(this.boardId, this.columnIndex, title);
     this.toggleEditing();
-    this.service.updateStorage();
+  }
+  onDeleteColumn(): void {
+    this.service.deleteColumn(this.boardId, this.columnIndex);
   }
   toggleEditing() {
     this.editing = !this.editing;

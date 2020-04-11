@@ -4,11 +4,8 @@
   flex-grow: 1;
   flex-basis: 0;
   height: fit-content;
+  position: relative;
 
-  //   background: rgba($color: white, $alpha: 0.5);
-  //   margin: 30px;
-  //   margin-top: 10px;
-  //   padding: 25px;
   min-width: 300px;
   border-radius: 4px;
 
@@ -17,20 +14,29 @@
   }
 
   .column-title {
-    cursor: pointer;
     font-family: "Lato", sans-serif;
     font-weight: 900;
     font-size: 20px;
     text-transform: uppercase;
     margin-bottom: 20px;
-    border-bottom: 2px solid #ffffff71;
     width: 100%;
     display: flex;
     align-items: center;
-    div {
+    > div {
       display: flex;
       justify-content: space-between;
       flex-grow: 1;
+      // Title Text and Edit Btn
+      > div {
+        cursor: pointer;
+        display: flex;
+        flex-grow: 0;
+        align-items: center;
+        border-bottom: 5px solid #ffffff71;
+      }
+      > span {
+        cursor: pointer;
+      }
     }
   }
 }
