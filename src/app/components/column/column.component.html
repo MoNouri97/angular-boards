@@ -1,0 +1,32 @@
+<div class="column-wrapper">
+  <div class="column-title">
+    <div *ngIf="!editing" (click)="toggleEditing()">
+      <span> {{ column.title }}</span>
+      <span class="icon is-small is-left has-text-grey-light">
+        <i data-feather="edit-2"></i>
+      </span>
+    </div>
+    <app-simple-form
+      *ngIf="editing"
+      btnText="Edit"
+      [initialVal]="column.title"
+      (btnClick)="onEditColTitle($event)"
+    ></app-simple-form>
+  </div>
+  <div
+    class="tasks"
+    cdkDropList
+    [cdkDropListData]="column.tasks"
+    (cdkDropListDropped)="drop($event)"
+    [@listAnim]
+  >
+    <app-simple-form
+      (btnClick)="onAddTask($event)"
+      placeholder="New Task"
+      btnText="add"
+      btnIcon="plus"
+    ></app-simple-form>
+    <app-task *ngFor="let item of column.tasks" cdkDrag [task]="item">
+    </app-task>
+  </div>
+</div>

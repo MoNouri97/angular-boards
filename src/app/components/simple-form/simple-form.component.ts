@@ -10,7 +10,6 @@ import {
 } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import * as Feather from "feather-icons";
-import { ok } from "assert";
 
 @Component({
   selector: "app-simple-form",
@@ -28,7 +27,7 @@ export class SimpleFormComponent implements OnInit, AfterViewChecked {
   @ViewChild("icon") icon: ElementRef<HTMLElement>;
   @ViewChild("input") input: ElementRef<HTMLElement>;
 
-  @Output() submit = new EventEmitter<string>();
+  @Output() btnClick = new EventEmitter<string>();
 
   constructor() {}
 
@@ -45,7 +44,7 @@ export class SimpleFormComponent implements OnInit, AfterViewChecked {
 
   onSubmit(form: NgForm): void {
     if (!form.valid) return;
-    this.submit.emit(form.value.mainInput);
+    this.btnClick.emit(form.value.mainInput);
     form.reset();
   }
 }

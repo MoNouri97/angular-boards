@@ -44,7 +44,6 @@ export class BoardsService {
    */
   updateStorage(): void {
     localStorage.setItem("boards", JSON.stringify(this.boards));
-    console.log(this.boards);
   }
 
   getAll(): Board[] {
@@ -63,7 +62,7 @@ export class BoardsService {
   addColumn(board: Board, title: string = "tasks") {
     board.columns.push(new Column(title, []));
   }
-  renameColumn(board: Board, column: number, title: string): void {
-    board.columns[column].title = title;
+  renameColumn(board: number, column: number, title: string): void {
+    this.getBoard(board).columns[column].title = title;
   }
 }

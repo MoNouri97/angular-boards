@@ -21,41 +21,14 @@
       cdkDropListGroup
       (scroll)="onScroll(true)"
     >
-      <div
+      <app-column
         *ngFor="let column of board.columns; index as i"
         class="board-column"
+        [columnIndex]="i"
+        [boardId]="board.id"
+        [column]="column"
       >
-        <div class="column-title">
-          <div *ngIf="!editing" (click)="toggleEditing()">
-            <span> {{ column.title }}</span>
-            <span class="icon is-small is-left has-text-grey-light">
-              <i data-feather="edit-2"></i>
-            </span>
-          </div>
-          <app-simple-form
-            *ngIf="editing"
-            btnText="Edit"
-            [initialVal]="column.title"
-            (submit)="onEditColTitle($event, i)"
-          ></app-simple-form>
-        </div>
-        <div
-          class="tasks"
-          cdkDropList
-          [cdkDropListData]="column.tasks"
-          (cdkDropListDropped)="drop($event)"
-          [@listAnim]
-        >
-          <app-simple-form
-            (submit)="onAddTask($event, i)"
-            placeholder="New Task"
-            btnText="add"
-            btnIcon="plus"
-          ></app-simple-form>
-          <app-task *ngFor="let item of column.tasks" cdkDrag [task]="item">
-          </app-task>
-        </div>
-      </div>
+      </app-column>
     </div>
   </div>
 </div>
