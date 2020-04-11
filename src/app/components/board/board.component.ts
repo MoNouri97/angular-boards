@@ -1,12 +1,8 @@
 import {
   Component,
   Input,
-  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  AfterContentChecked,
-  AfterContentInit,
   AfterViewChecked,
 } from "@angular/core";
 import { Board } from "src/app/models/board.model";
@@ -165,6 +161,11 @@ export class BoardComponent implements AfterViewChecked {
 
   onAddTask(task: string, column: number): void {
     this.service.addTask(task, this.board.id, column);
+    this.service.updateStorage();
+  }
+  onEditColTitle(title: string, column: number): void {
+    this.service.renameColumn(this.board, column, title);
+    this.toggleEditing();
     this.service.updateStorage();
   }
   onAddColumn(): void {

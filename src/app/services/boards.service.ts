@@ -63,4 +63,7 @@ export class BoardsService {
   addColumn(board: Board, title: string = "tasks") {
     board.columns.push(new Column(title, []));
   }
+  renameColumn(board: Board, column: number, title: string): void {
+    board.columns[column].title = title;
+  }
 }

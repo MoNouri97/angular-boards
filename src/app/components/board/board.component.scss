@@ -73,10 +73,15 @@
           font-size: 20px;
           text-transform: uppercase;
           margin-bottom: 20px;
-          border-bottom: 5px solid white;
-          width: max-content;
+          border-bottom: 2px solid #ffffff71;
+          width: 100%;
           display: flex;
           align-items: center;
+          div {
+            display: flex;
+            justify-content: space-between;
+            flex-grow: 1;
+          }
         }
       }
     }

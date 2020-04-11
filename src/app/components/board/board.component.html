@@ -32,7 +32,12 @@
               <i data-feather="edit-2"></i>
             </span>
           </div>
-          <app-add-task *ngIf="editing"></app-add-task>
+          <app-simple-form
+            *ngIf="editing"
+            btnText="Edit"
+            [initialVal]="column.title"
+            (submit)="onEditColTitle($event, i)"
+          ></app-simple-form>
         </div>
         <div
           class="tasks"
@@ -41,7 +46,12 @@
           (cdkDropListDropped)="drop($event)"
           [@listAnim]
         >
-          <app-add-task (add)="onAddTask($event, i)"></app-add-task>
+          <app-simple-form
+            (submit)="onAddTask($event, i)"
+            placeholder="New Task"
+            btnText="add"
+            btnIcon="plus"
+          ></app-simple-form>
           <app-task *ngFor="let item of column.tasks" cdkDrag [task]="item">
           </app-task>
         </div>
