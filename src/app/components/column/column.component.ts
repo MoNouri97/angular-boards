@@ -139,12 +139,7 @@ export class ColumnComponent {
     }
     this.service.updateStorage();
   }
-  getConnectedBoard() {
-    return this.service.getBoard(this.boardId);
-  }
   onAddTask(task: string): void {
-    console.log(task);
-
     this.service.addTask(task, this.boardId, this.columnIndex);
   }
   onEditColTitle(title: string): void {
@@ -153,6 +148,7 @@ export class ColumnComponent {
   }
   onDeleteColumn(): void {
     this.service.deleteColumn(this.boardId, this.columnIndex);
+    this.delete.emit();
   }
   toggleEditing() {
     this.editing = !this.editing;

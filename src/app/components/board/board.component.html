@@ -29,12 +29,14 @@
         (scroll)="onScroll(true)"
       >
         <app-column
-          cdkDrag
           *ngFor="let column of board.columns; index as i"
           class="board-column"
           [columnIndex]="i"
           [boardId]="board.id"
           [column]="column"
+          (delete)="onDeleteColumn()"
+          cdkDrag
+          @colAnim
         >
         </app-column>
       </div>

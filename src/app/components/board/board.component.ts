@@ -13,11 +13,53 @@ import {
 } from "@angular/cdk/drag-drop";
 import { BoardsService } from "src/app/services/boards.service";
 import { trigger, transition, animate, style } from "@angular/animations";
+import { AbsoluteSourceSpan } from "@angular/compiler";
 
 @Component({
   selector: "app-board",
   templateUrl: "./board.component.html",
   styleUrls: ["./board.component.scss"],
+  animations: [
+    trigger("colAnim", [
+      // out
+      transition("* => void", [
+        // scale up
+        animate(
+          50,
+          style({
+            transform: "scale(1.05)",
+          })
+        ),
+        // scale down
+        animate(
+          50,
+          style({
+            transform: "scale(1)",
+            opacity: 0.75,
+          })
+        ),
+        animate(
+          "120ms ease-out",
+          style({
+            transform: "scale(0)",
+            opacity: 0,
+            width: 0,
+          })
+        ),
+        // animate space
+        animate(
+          "150ms ease-out",
+          style({
+            // shrink the padding
+            paddingRight: 0,
+            paddingLeft: 0,
+            marginRight: 0,
+            marginLeft: 0,
+          })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class BoardComponent implements AfterViewChecked {
   @Input() board: Board;
@@ -36,6 +78,7 @@ export class BoardComponent implements AfterViewChecked {
   refresh() {
     const width = this.columns.nativeElement.scrollWidth;
     this.scrollDiv.nativeElement.style.width = width.toString() + "px";
+    console.log("refresh" + width);
   }
 
   /**
@@ -51,8 +94,6 @@ export class BoardComponent implements AfterViewChecked {
     this.scrollDiv.nativeElement.parentElement.scrollLeft = this.columns.nativeElement.scrollLeft;
   }
   drop(event: CdkDragDrop<string[]>) {
-    console.log("drop");
-
     moveItemInArray(
       event.container.data,
       event.previousIndex,
@@ -64,6 +105,9 @@ export class BoardComponent implements AfterViewChecked {
 
   onAddColumn(): void {
     this.service.addColumn(this.board);
+    this.refresh();
+  }
+  onDeleteColumn(): void {
     this.refresh();
   }
 }

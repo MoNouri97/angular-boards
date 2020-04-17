@@ -11,6 +11,15 @@ $input-shadow: none;
 * {
   scrollbar-color: #dadada #ffffff;
 }
+::-webkit-scrollbar {
+  background-color: #ffffff;
+}
+::-webkit-scrollbar-corner {
+  background-color: #dadada;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dadada;
+}
 html,
 body {
   margin: 0;
