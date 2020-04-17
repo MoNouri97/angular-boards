@@ -14,18 +14,21 @@ A task tracking app using Angular .
 
 ### Home
 
-![screenshot](<screenshots/Screenshot from 2020-04-09 08-18-34.png> "main ui")
+Current UI
+![screenshot](<screenshots/Screenshot from 2020-04-17 23-30-10.png> "main ui")
 
 ## Features
 
 - adding tasks
 - drag & drop to move tasks between lists
+- adding lists
+- managing lists ( rename and remove)
 
 **To Add**
 
 - removing tasks
-- adding lists
 - multiple boards
+- PWA
 
 this app is using the angular CDK for drag & drop
 
