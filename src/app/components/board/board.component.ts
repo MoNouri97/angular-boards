@@ -18,49 +18,6 @@ import { trigger, transition, animate, style } from "@angular/animations";
   selector: "app-board",
   templateUrl: "./board.component.html",
   styleUrls: ["./board.component.scss"],
-  animations: [
-    trigger("colAnim", [
-      transition("* => void", [
-        // scale up
-        animate(
-          50,
-          style({
-            transform: "scale(1.05)",
-          })
-        ),
-        // scale down
-        animate(
-          50,
-          style({
-            transform: "scale(1)",
-            opacity: 0.75,
-          })
-        ),
-        animate(
-          "200ms ease-out",
-          style({
-            transform: "scale(0)",
-            opacity: 0,
-          })
-        ),
-        // animate space
-        animate(
-          "100ms ease-out",
-          style({
-            width: "0%",
-            "margin-bottom": 0,
-            "margin-left": 0,
-            "margin-right": 0,
-            // expand the padding
-            paddingTop: 0,
-            paddingBottom: 0,
-            paddingRight: 0,
-            paddingLeft: 0,
-          })
-        ),
-      ]),
-    ]),
-  ],
 })
 export class BoardComponent implements AfterViewChecked {
   @Input() board: Board;

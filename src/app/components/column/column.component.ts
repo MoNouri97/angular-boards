@@ -139,7 +139,9 @@ export class ColumnComponent {
     }
     this.service.updateStorage();
   }
-
+  getConnectedBoard() {
+    return this.service.getBoard(this.boardId);
+  }
   onAddTask(task: string): void {
     console.log(task);
 
