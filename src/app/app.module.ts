@@ -10,6 +10,8 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { BoardComponent } from "./components/board/board.component";
 import { TaskComponent } from "./components/task/task.component";
 import { AddTaskComponent } from "./components/add-task/add-task.component";
+import { SimpleFormComponent } from './components/simple-form/simple-form.component';
+import { ColumnComponent } from './components/column/column.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { AddTaskComponent } from "./components/add-task/add-task.component";
     BoardComponent,
     TaskComponent,
     AddTaskComponent,
+    SimpleFormComponent,
+    ColumnComponent,
   ],
   imports: [
     BrowserModule,

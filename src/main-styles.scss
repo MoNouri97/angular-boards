@@ -8,10 +8,23 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
+* {
+  scrollbar-color: #dadada #ffffff;
+}
+::-webkit-scrollbar {
+  background-color: #ffffff;
+}
+::-webkit-scrollbar-corner {
+  background-color: #dadada;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dadada;
+}
 html,
 body {
-  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 html {
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-image: linear-gradient(120deg, #789cff 0%, #58ca87 100%);
 }
