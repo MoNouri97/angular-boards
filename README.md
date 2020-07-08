@@ -3,6 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
 A task tracking app using Angular . inspired by sites like Trello
 
+Visit App: https://boards-trello-clone.web.app/
+
 - [Boards](#boards)
   - [UI](#ui)
     - [Home](#home)
