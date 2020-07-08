@@ -1,28 +1,44 @@
 <div class="board">
-  <div class="board-bar">
-    <p class="board-name">{{ board.name }}</p>
+  <div class="board-bar columns">
+    <p class="board-name column is-four-fifths">{{ board.name }}</p>
+    <div class="column">
+      <button class="button is-primary is-light" (click)="onAddColumn()">
+        <span>Column</span>
+        <span class="icon is-small is-left">
+          <i data-feather="plus"></i>
+        </span>
+      </button>
+    </div>
   </div>
 
   <div class="board-wrapper">
-    <div class="board-columns" cdkDropListGroup>
+    <div class="scrollBar" (scroll)="onScroll(false)">
+      <div #scrollDiv></div>
+    </div>
+    <div
+      class="columns-wrapper"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      [cdkDropListData]="board.columns"
+      (cdkDropListDropped)="drop($event)"
+    >
       <div
-        *ngFor="let column of board.columns; index as i"
-        class="board-column"
+        #columns
+        class="board-columns"
+        cdkDropListGroup
+        (scroll)="onScroll(true)"
       >
-        <div class="column-title">
-          {{ column.title }}
-        </div>
-        <div
-          class="tasks"
-          cdkDropList
-          [cdkDropListData]="column.tasks"
-          (cdkDropListDropped)="drop($event)"
-          [@listAnim]
+        <app-column
+          *ngFor="let column of board.columns; index as i"
+          class="board-column"
+          [columnIndex]="i"
+          [boardId]="board.id"
+          [column]="column"
+          (delete)="onDeleteColumn()"
+          cdkDrag
+          @colAnim
         >
-          <app-add-task (add)="onAddTask($event, i)"></app-add-task>
-          <app-task *ngFor="let item of column.tasks" cdkDrag [task]="item">
-          </app-task>
-        </div>
+        </app-column>
       </div>
     </div>
   </div>
