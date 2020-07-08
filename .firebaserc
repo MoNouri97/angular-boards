@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "boards-trello-clone": {
+      "hosting": {
+        "boards": [
+          "boards-trello-clone"
+        ]
+      }
+    }
+  }
+}

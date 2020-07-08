@@ -12,6 +12,8 @@ import { TaskComponent } from "./components/task/task.component";
 import { AddTaskComponent } from "./components/add-task/add-task.component";
 import { SimpleFormComponent } from './components/simple-form/simple-form.component';
 import { ColumnComponent } from './components/column/column.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { ColumnComponent } from './components/column/column.component';
     DragDropModule,
     FormsModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

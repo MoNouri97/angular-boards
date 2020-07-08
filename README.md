@@ -27,12 +27,12 @@ Current UI
 - drag & drop to move tasks between lists
 - adding lists
 - managing lists ( rename and remove)
+- PWA : this app can be installed to run offline
 
 **To Add**
 
 - removing tasks
 - multiple boards
-- PWA
 
 this app is using the angular CDK for drag & drop
 
